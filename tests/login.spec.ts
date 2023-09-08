@@ -12,9 +12,7 @@ test.describe('login page', () => {
     test('Verify user can login with valid credentials', async ({ page }) => {
         loginPage = new LoginPage(page);
         await loginPage.navigation();
-        await loginPage.userNameInputField.type('standard_user');
-        await loginPage.passInputField.type('secret_sauce');
-        await loginPage.loginButton.click();
+        await loginPage.inputUserCred('standard_user','secret_sauce');
         await expect(page).toHaveURL('https://www.saucedemo.com/v1/inventory.html');
         await expect(loginPage.productPageTitle).toHaveText('Products');
     })
@@ -23,9 +21,7 @@ test.describe('login page', () => {
         let errorText = 'Username and password do not match any user in this service';
         loginPage = new LoginPage(page);
         await loginPage.navigation();
-        await loginPage.userNameInputField.type('standard_user');
-        await loginPage.passInputField.type('test');
-        await loginPage.loginButton.click();
+        await loginPage.inputUserCred('standard_user','test');
         expect(await loginPage.invalidLoginErrorMessage()).toContain(errorText);
     })
 

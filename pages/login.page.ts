@@ -22,6 +22,12 @@ class LoginPage{
         await this.page.goto('https://www.saucedemo.com/v1/');
     }
 
+    async inputUserCred(userName:string, userPass:string){
+        await this.userNameInputField.type(userName);
+        await this.passInputField.type(userPass);
+        await this.loginButton.click();
+    }
+
     async invalidLoginErrorMessage(){
         return this.errorMessage.textContent();
     }
