@@ -1,0 +1,21 @@
+{
+    "userCred":[
+        {
+            "userName": "standard_user",
+            "userPass": "secret_sauce"
+        },
+        {
+            "userName": "performance_glitch_user",
+            "userPass": "secret_sauce"
+        }
+    ],
+    "product":[
+        {
+            "productOne": "Sauce Labs Fleece Jacket"
+        },
+        {
+            "productTwo": "Test.allTheThings() T-Shirt (Red)"
+        }
+    ]
+
+}
