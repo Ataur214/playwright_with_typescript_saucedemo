@@ -3,6 +3,7 @@ import LoginPage from '../pages/login.page';
 import ProductsPage from '../pages/product.page';
 import ShoppingCartDetailsPage from '../pages/shoppingCartDetails.page'
 import CheckoutPage from '../pages/checkout.page';
+import CheckOutOverviewPage from '../pages/checkoutOverview.page';
 
 test.describe('E2E checkout', () => {
 
@@ -10,12 +11,14 @@ test.describe('E2E checkout', () => {
     let productpage: ProductsPage;
     let shoppingCartDetailsPage: ShoppingCartDetailsPage;
     let checkOutPage: CheckoutPage;
+    let checkOutOverviewPage: CheckOutOverviewPage;
 
     test('@Regression E2E product checkout', async ({ page }) => {
         loginPage = new LoginPage(page);
         productpage = new ProductsPage(page);
         shoppingCartDetailsPage = new ShoppingCartDetailsPage(page);
         checkOutPage = new CheckoutPage(page);
+        checkOutOverviewPage = new CheckOutOverviewPage(page);
         await loginPage.navigation();
         await expect(page).toHaveTitle('Swag Labs');
 
@@ -42,8 +45,19 @@ test.describe('E2E checkout', () => {
         expect(await shoppingCartDetailsPage.products.allTextContents()).toEqual(expectedProduct);
         await shoppingCartDetailsPage.checkOutButton.click();
         await expect(checkOutPage.pageTitle).toHaveText('Checkout: Your Information');
-        await page.pause();
 
+        await checkOutPage.fillUpChekOutForm('test','test','1230');
+        await checkOutPage.continueButton.click();
+
+        await expect(checkOutOverviewPage.checkoutPageTitle).toHaveText('Checkout: Overview');
+        expect(await checkOutOverviewPage.products.allTextContents()).toEqual(expectedProduct);
+
+        const actualSubTotal = await checkOutOverviewPage.orderSummeryCalculation();
+        const expectedSubTotal = await checkOutOverviewPage.expectedSubTotal();
+        expect(actualSubTotal).toEqual(expectedSubTotal);
+
+        await checkOutOverviewPage.finishButton.click();
+        await expect(checkOutOverviewPage.oderSuccessMessage).toHaveText('THANK YOU FOR YOUR ORDER');
 
     })
 

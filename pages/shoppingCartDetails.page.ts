@@ -1,4 +1,5 @@
 import { Page, Locator } from "@playwright/test"
+
 class ShoppingCartDetailsPage {
     page: Page;
     products: Locator;
