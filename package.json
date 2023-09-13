@@ -4,8 +4,8 @@
   "description": "This is a playwright automation project with typescript for saucedemo.com website",
   "main": "index.js",
   "scripts": {
-    "RegressionTest_Chrome": "npx playwright test --project=chromium --grep @Regression",
-    "SmokeTest_FireFox": "npx playwright test --project=firefox --grep @web",
+    "RegressionTest_Chrome_Headless": "npx playwright test --project=chromium --grep @Regression",
+    "RegressionTest_Chrome": "npx playwright test --project=chromium --headed --grep @Regression",
     "AllureReport": "allure generate my-allure-results -o allure-report --clean && allure open allure-report",
     "HtmlReport": "npx playwright show-report"
   },
@@ -13,6 +13,7 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@faker-js/faker": "^8.0.2",
     "@playwright/test": "^1.37.1",
     "allure-playwright": "^2.7.0"
   }

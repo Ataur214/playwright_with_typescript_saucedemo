@@ -1,6 +1,6 @@
 import { Page, Locator } from "@playwright/test";
 
-class LoginPage{
+export class LoginPage{
 
     page: Page;
     userNameInputField: Locator;
@@ -19,18 +19,18 @@ class LoginPage{
     }
 
     async navigation(){
-        await this.page.goto('https://www.saucedemo.com/v1/');
+        await this.page.goto('https://www.saucedemo.com/v1');
     }
 
-    async inputUserCred(userName:string, userPass:string){
+    async inputUserCred(userName:string, userPass:string):Promise<void>{
         await this.userNameInputField.type(userName);
         await this.passInputField.type(userPass);
         await this.loginButton.click();
     }
 
-    async invalidLoginErrorMessage(){
+    async invalidLoginErrorMessage():Promise<string | null>{
         return this.errorMessage.textContent();
     }
 
 }
-export default LoginPage;
+//export default LoginPage;

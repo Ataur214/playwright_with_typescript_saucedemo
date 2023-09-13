@@ -1,6 +1,6 @@
 import { Page, Locator } from "@playwright/test"
 
-class ShoppingCartDetailsPage {
+export class ShoppingCartDetailsPage {
     page: Page;
     products: Locator;
     checkOutButton: Locator;
@@ -12,4 +12,4 @@ class ShoppingCartDetailsPage {
 
     }
 }
-export default ShoppingCartDetailsPage
+//export default ShoppingCartDetailsPage

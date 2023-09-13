@@ -1,5 +1,5 @@
 import { Page, Locator } from "@playwright/test"
-class CheckoutPage {
+export class CheckoutPage {
     page: Page;
     pageTitle: Locator;
     checkOutButton: Locator;
@@ -17,10 +17,10 @@ class CheckoutPage {
         this.continueButton = page.getByRole('button', {name:'CONTINUE'});
     }
 
-    async fillUpChekOutForm(firstName: string, lastName:string, zipCode:string){
+    async fillUpChekOutForm(firstName: string, lastName:string, zipCode:string):Promise<void>{
         await this.firstName.type(firstName);
         await this.lastName.type(lastName);
         await this.zipCode.type(zipCode);
     }
 }
-export default CheckoutPage
+//export default CheckoutPage

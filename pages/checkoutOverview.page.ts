@@ -1,6 +1,6 @@
 import { Page, Locator } from "@playwright/test"
 
-class CheckOutOverviewPage {
+export class CheckOutOverviewPage {
     page: Page;
     checkoutPageTitle: Locator;
     products: Locator;
@@ -19,7 +19,7 @@ class CheckOutOverviewPage {
         this.summarySubtotal = page.locator('.summary_subtotal_label');
     }
 
-    async orderSummeryCalculation() {
+    async orderSummeryCalculation():Promise<number> {
         const productPricewithText = await this.productPrice.allTextContents();
         const itemPrice = productPricewithText.map(item => item.split('$')[1]);
         let result = 0;
@@ -29,7 +29,7 @@ class CheckOutOverviewPage {
         return result;
     }
 
-    async expectedSubTotal() {
+    async expectedSubTotal():Promise<number> {
         const actualSubtotalWithText = await this.summarySubtotal.textContent();
 
         if (actualSubtotalWithText === null || actualSubtotalWithText === undefined) {
@@ -40,4 +40,4 @@ class CheckOutOverviewPage {
     }
 
 }
-export default CheckOutOverviewPage
+//export default CheckOutOverviewPage

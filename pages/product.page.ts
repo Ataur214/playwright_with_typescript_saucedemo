@@ -1,5 +1,5 @@
 import { Page, Locator } from "@playwright/test"
-class ProductsPage {
+export class ProductsPage {
     page: Page;
     productPageTitle: Locator;
     addToCartButton: Locator;
@@ -23,11 +23,11 @@ class ProductsPage {
 
     }
 
-    async navigation() {
-        await this.page.goto('https://www.saucedemo.com/v1/inventory.html');
+    async navigation():Promise<void> {
+        await this.page.goto('');
     }
 
-    async sortProductWithValue(sortingOption: string) {
+    async sortProductWithValue(sortingOption: string):Promise<boolean> {
         await this.productSortDropDown.selectOption(sortingOption);
         const productPriceWithString = await this.productValue.allTextContents();
         const productPrice = productPriceWithString.map(item => item.split('$')[1]);
@@ -56,9 +56,10 @@ class ProductsPage {
             }
             return isSorted(productPrice);
         }
+        return false;
     }
 
-    async addProductToMyCart(productName:string){
+    async addProductToMyCart(productName:string):Promise<void>{
         for(let i = 0; i<await this.products.count(); i++){
             if(await this.products.nth(i).textContent() == productName){
                 await this.addToCartButton.nth(i).click();
@@ -66,7 +67,7 @@ class ProductsPage {
         }
     }
 
-    async addProductToMyCartFromProductDetailsPage(productName:string){
+    async addProductToMyCartFromProductDetailsPage(productName:string):Promise<void>{
         for(let i = 0; i<await this.products.count(); i++){
             if(await this.products.nth(i).textContent() == productName){
                 await this.products.nth(i).click();
