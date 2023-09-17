@@ -34,6 +34,7 @@ test.describe('login page', () => {
     })
 
     test('Verify user can add product to the shopping cart',async ({page})=>{
+        test.use({baseURL:"google.com"})
         productpage = new ProductsPage(page);
         await page.goto('/v1/inventory.html')
         await productpage.addProductToMyCart('Sauce Labs Fleece Jacket');

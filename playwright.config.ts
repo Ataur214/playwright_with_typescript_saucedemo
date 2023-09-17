@@ -1,4 +1,7 @@
 import { defineConfig, devices } from '@playwright/test';
+import dotenv from 'dotenv';
+
+dotenv.config({path:'.env'});
 
 /**
  * Read environment variables from file.
@@ -41,17 +44,22 @@ export default defineConfig({
   use: {
     /* Base URL to use in actions like `await page.goto('/')`. */
     baseURL: 'https://www.saucedemo.com',
+    //baseURL: process.env.STAGING === 'STAGE' ? 'http://staging.example.test/' : 'http://example.test/',
 
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
     trace: 'on-first-retry',
     storageState: 'login-state.json',
+    screenshot:"only-on-failure",
   },
 
   /* Configure projects for major browsers */
   projects: [
     {
       name: 'chromium',
-      use: { ...devices['Desktop Chrome'] },
+      use: { ...devices['Desktop Chrome'],
+      screenshot:"only-on-failure",
+      timezoneId:'Europe/Paris',
+     },
     },
 
     {

@@ -6,6 +6,7 @@
   "scripts": {
     "RegressionTest_Chrome_Headless": "npx playwright test --project=chromium --grep @Regression",
     "RegressionTest_Chrome": "npx playwright test --project=chromium --headed --grep @Regression",
+    "APITest": "npx playwright test tests/api-calls/getLoginToken.spec.ts --project=chromium",
     "AllureReport": "allure generate my-allure-results -o allure-report --clean && allure open allure-report",
     "HtmlReport": "npx playwright show-report"
   },
@@ -16,5 +17,9 @@
     "@faker-js/faker": "^8.0.2",
     "@playwright/test": "^1.37.1",
     "allure-playwright": "^2.7.0"
+  },
+  "dependencies": {
+    "dotenv": "^16.3.1",
+    "node-fetch": "^3.3.2"
   }
 }

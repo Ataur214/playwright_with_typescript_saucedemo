@@ -1,5 +1,6 @@
 allure-results
 my-allure-results
+.env
 # Logs
 logs
 *.log
