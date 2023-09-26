@@ -19,21 +19,25 @@ To run these scripts follow the below steps:
    ```bash
         npm run test
    ```
-
-    b. to run only UI test in headed mode 
+    b. to run only UI test in headed mode
+   ```bash
         npm run ui-test
-
+   ```
     c. to run only UI test in headles mode.
-        npm run ui-test-headless  
-
+   ```bash
+        npm run ui-test-headless
+   ```
     d. to run only API test.
+   ```bash
         npm run api-test
+   ```
 
     Note: You can add more command accordingly in package.json file
 
 6. Once Finished, To Check the result, Type in the commandline tool
-
-    a. npm run generateReport
+```bash
+   npm run generateReport
+```
 
 	
 
@@ -42,9 +46,15 @@ How to setup the playwright project:
 1. Create a directory
 2. Open the directory in VS code
 3. From the terminal go to that folder location 
-4. Give the command "npm init playwright@latest"
-5. Give all the answer in the terminal it will download accordingly 
-6. to run the example test give command "npx playwright test"
+4. Give the command
+   ```bash
+    npm init playwright@latest"
+   ```
+6. Give all the answer in the terminal it will download accordingly 
+7. to run the example test give command
+   ```bash
+   	npx playwright test"
+   ```
 
 
 How to add Allure Report
@@ -52,15 +62,23 @@ How to add Allure Report
 1. give command "npm i -D @playwright/test allure-playwright"
 2. it will add the devdependency on package.json file
 3. add to the playwright.config.ts file on reporters :
+   ```bash
     ["allure-playwright",
         {
             detail: true,
             outputFolder: "my-allure-results",
             suiteTitle: false,
         }]
-4. in Package.json file add the script 
-    "generateReport": "npx allure generate my-allure-results -o allure-report --clean && allure open allure-report"
-5. Generate the report : npm run generateReport
+   ```
+5. in Package.json file add the script 
+    "generateReport":
+   ```bash
+   npx allure generate my-allure-results -o allure-report --clean && allure open allure-report
+   ```
+7. Generate the report :
+   ```bash
+   npm run generateReport
+   ```
 
 Issues
 =====================================
