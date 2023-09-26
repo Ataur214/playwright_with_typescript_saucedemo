@@ -32,7 +32,7 @@ To run these scripts follow the below steps:
         npm run api-test
    ```
 
-    Note: You can add more command accordingly in package.json file
+    **Note:** You can add more command accordingly in package.json file
 
 6. Once Finished, To Check the result, Type in the commandline tool
 ```bash
@@ -53,7 +53,7 @@ How to setup the playwright project:
 6. Give all the answer in the terminal it will download accordingly 
 7. to run the example test give command
    ```bash
-   	npx playwright test"
+   npx playwright test"
    ```
 
 
