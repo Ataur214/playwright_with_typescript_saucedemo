@@ -16,7 +16,9 @@ To run these scripts follow the below steps:
 4. To run this scripts, follow the below steps
 
     a. to run all the test type below line in the gitbash Commandline.
-        npm run test 
+   ```bash
+        npm run test
+   ```
 
     b. to run only UI test in headed mode 
         npm run ui-test
@@ -29,7 +31,7 @@ To run these scripts follow the below steps:
 
     Note: You can add more command accordingly in package.json file
 
-5. Once Finished, To Check the result, Type in the commandline tool
+6. Once Finished, To Check the result, Type in the commandline tool
 
     a. npm run generateReport
 
