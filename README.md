@@ -35,7 +35,7 @@ To run these scripts follow the below steps:
 
 	
 
-*How to setup the playwright project:
+How to setup the playwright project:
 ===================================
 1. Create a directory
 2. Open the directory in VS code
